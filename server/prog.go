@@ -36,7 +36,9 @@ func main() {
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		handleWS(w, r)
 	})
-	err := http.ListenAndServe(":8000", nil)
+	cs := ":8000"
+	fmt.Println("listening on", cs)
+	err := http.ListenAndServe(cs, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
