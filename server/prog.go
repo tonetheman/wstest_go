@@ -22,6 +22,13 @@ func handleWS(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("got conn in handleWS", conn)
 	defer conn.Close()
 
+	messageType, p, err := conn.ReadMessage()
+	if err != nil {
+		log.Println(err)
+		return
+	}
+	fmt.Println("read this type of message", messageType)
+	fmt.Println("read this:", p)
 }
 
 func main() {

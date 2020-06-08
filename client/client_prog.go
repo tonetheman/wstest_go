@@ -18,4 +18,10 @@ func main() {
 	fmt.Println(res)
 	fmt.Println(conn)
 	defer conn.Close()
+
+	var buffer []byte = make([]byte, 4)
+	for i := 0; i < 4; i++ {
+		buffer[i] = byte(i)
+	}
+	conn.WriteMessage(websocket.BinaryMessage, buffer)
 }
